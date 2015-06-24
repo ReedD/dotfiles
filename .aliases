@@ -14,6 +14,7 @@ alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
+alias e=s
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -129,6 +130,19 @@ command -v grunt > /dev/null && alias grunt="grunt --stack"
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
+
+# Alias to delete all the stupid shit you did last night.
+# Gets you back to a clean repository.
+# Here’s how it works:
+#   -d : Removes untracked directories
+#   -x : Ignore rules in the .gitignore file
+#   -f : Force it to happen
+#   reset –hard : Discard any tracked files in the repository
+alias git-fuckit="git clean -d -f; git reset --hard"
+alias git-fuckeverything="git clean -d -x -f; git reset --hard"
+
+# https://github.com/nvbn/thefuck
+alias fuck='$(thefuck $(fc -ln -1))'
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
